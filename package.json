@@ -1,7 +1,7 @@
 {
-    "name": "open-new-window",
-    "displayName": "Open New Window",
-    "description": "Opens the current tab in a new window.",
+    "name": "open-new-vscode",
+    "displayName": "Open In New VS Code",
+    "description": "Opens the current tab in a new VS Code window.",
     "version": "0.0.1",
     "publisher": "SoulSeekkor",
     "engines": {
@@ -11,16 +11,57 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "*"
     ],
     "main": "./extension",
     "contributes": {
-        "commands": [
-            {
-                "command": "extension.sayHello",
-                "title": "Hello World"
-            }
-        ]
+        "commands": [{
+                "command": "workbench.action.files.showOpenedFileInNewWindow",
+                "title": "Launch In New VS Code"
+            },{
+                "command": "workbench.action.files.revealActiveFileInWindows",
+                "title": "Open In Explorer"
+            },{
+                "command": "workbench.action.reopenClosedEditor",
+                "title": "Reopen Closed Editor"
+            },{
+                "command": "expandLineSelection",
+                "title": "Select Line(s)"
+            },{
+                "command": "editor.action.deleteLines",
+                "title": "Remove Line(s)"
+            },{
+                "command": "editor.action.commentLine",
+                "title": "Toggle Line Comment"
+            },{
+                "command": "editor.action.blockComment",
+                "title": "Toggle Block Comment"
+            }],
+        "menus": {
+            "editor/context": [{
+                "command": "workbench.action.files.showOpenedFileInNewWindow",
+                "group": "navigation"
+            },{
+                "command": "workbench.action.files.revealActiveFileInWindows",
+                "group": "navigation"
+            },{
+                "command": "expandLineSelection",
+                "group": "1_modification@1"
+            },{
+                "command": "editor.action.deleteLines",
+                "group": "1_modification@2"
+            },{
+                "command": "editor.action.commentLine",
+                "group": "9_cutcopypaste"
+            },{
+                "command": "editor.action.blockComment",
+                "group": "9_cutcopypaste"
+            }],
+            "editor/title/context": [{
+                "command": "workbench.action.reopenClosedEditor",
+                "group": "navigation"
+            }]
+        }
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",

@@ -8,16 +8,16 @@ function activate(context) {
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "open-new-window" is now active!');
+    console.log('open-new-vscode extension has been activated.');
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    var disposable = vscode.commands.registerCommand('extension.sayHello', function () {
+    var disposable = vscode.commands.registerCommand('extension.openNewVSCode', function () {
         // The code you place here will be executed every time your command is executed
 
         // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World!');
+        vscode.window.showInformationMessage('Opened in new VS Code: ' + vscode.window.activeTextEditor.document.fileName);
     });
 
     context.subscriptions.push(disposable);
