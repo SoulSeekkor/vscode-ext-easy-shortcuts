@@ -1,8 +1,8 @@
 {
-    "name": "open-new-vscode",
-    "displayName": "Open In New VS Code",
-    "description": "Opens the current tab in a new VS Code window.",
-    "version": "0.0.1",
+    "name": "vscode-easy-shortcuts",
+    "displayName": "VS Code Easy Shortcuts",
+    "description": "Adds easy to use shortcuts to VS Code for commonly used tasks.",
+    "version": "1.0.0",
     "publisher": "SoulSeekkor",
     "engines": {
         "vscode": "^1.16.0"
@@ -15,6 +15,52 @@
     ],
     "main": "./extension",
     "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "VS Code Easy Shortcuts",
+            "properties": {
+                "vscode-easy-shortcuts.LaunchInNewVSCode.visible":{
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Controls whether the 'Launch In New VS Code' menu is displayed or not."
+                },
+                "vscode-easy-shortcuts.OpenInExplorer.visible":{
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Controls whether the 'Open In Explorer' menu is displayed or not."
+                },
+                "vscode-easy-shortcuts.ReopenClosedEditor.visible":{
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Controls whether the 'Reopen Closed Editor' menu is displayed or not."
+                },
+                "vscode-easy-shortcuts.SelectLines.visible":{
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Controls whether the 'Select Line(s)' menu is displayed or not."
+                },
+                "vscode-easy-shortcuts.RemoveLines.visible":{
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Controls whether the 'Remove Line(s)' menu is displayed or not."
+                },
+                "vscode-easy-shortcuts.ToggleLineComment.visible":{
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Controls whether the 'Toggle Line Comment' menu is displayed or not."
+                },
+                "vscode-easy-shortcuts.ToggleBlockComment.visible":{
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Controls whether the 'Toggle Block Comment' menu is displayed or not."
+                },
+                "vscode-easy-shortcuts.ToggleBreakpoint.visible":{
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Controls whether the 'Toggle Breakpoint' menu is displayed or not."
+                }
+            }
+        },
         "commands": [{
                 "command": "workbench.action.files.showOpenedFileInNewWindow",
                 "title": "Launch In New VS Code"
@@ -36,30 +82,44 @@
             },{
                 "command": "editor.action.blockComment",
                 "title": "Toggle Block Comment"
+            },{
+                "command": "editor.debug.action.toggleBreakpoint",
+                "title": "Toggle Breakpoint"
             }],
         "menus": {
             "editor/context": [{
                 "command": "workbench.action.files.showOpenedFileInNewWindow",
-                "group": "navigation"
+                "group": "navigation",
+                "when": "config.vscode-easy-shortcuts.LaunchInNewVSCode.visible"
             },{
                 "command": "workbench.action.files.revealActiveFileInWindows",
-                "group": "navigation"
+                "group": "navigation",
+                "when": "config.vscode-easy-shortcuts.OpenInExplorer.visible"
             },{
                 "command": "expandLineSelection",
-                "group": "1_modification@1"
+                "group": "1_modification@1",
+                "when": "config.vscode-easy-shortcuts.SelectLines.visible"
             },{
                 "command": "editor.action.deleteLines",
-                "group": "1_modification@2"
+                "group": "1_modification@2",
+                "when": "config.vscode-easy-shortcuts.RemoveLines.visible"
             },{
                 "command": "editor.action.commentLine",
-                "group": "9_cutcopypaste"
+                "group": "9_cutcopypaste",
+                "when": "config.vscode-easy-shortcuts.ToggleLineComment.visible"
             },{
                 "command": "editor.action.blockComment",
-                "group": "9_cutcopypaste"
+                "group": "9_cutcopypaste",
+                "when": "config.vscode-easy-shortcuts.ToggleBlockComment.visible"
+            },{
+                "command": "editor.debug.action.toggleBreakpoint",
+                "group": "1_modification@1",
+                "when": "config.vscode-easy-shortcuts.ToggleBreakpoint.visible"
             }],
             "editor/title/context": [{
                 "command": "workbench.action.reopenClosedEditor",
-                "group": "navigation"
+                "group": "navigation",
+                "when": "config.vscode-easy-shortcuts.ReopenClosedEditor.visible"
             }]
         }
     },
@@ -74,5 +134,9 @@
         "eslint": "^4.6.1",
         "@types/node": "^7.0.0",
         "@types/mocha": "^2.2.42"
+    },
+    "homepage": "https://www.soulsforums.com",
+    "bugs": {
+        "email": "webmaster@soulseekkor.com"
     }
 }

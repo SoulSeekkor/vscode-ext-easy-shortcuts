@@ -1,7 +1,6 @@
 # Change Log
-All notable changes to the "open-new-vscode" extension will be documented in this file.
+All notable changes to the "vscode-easy-shortcuts" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### 1.0.0
 
-## [Unreleased]
-- Initial release
+Initial release of vscode-easy-shortcuts.
